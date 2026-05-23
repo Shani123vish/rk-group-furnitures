@@ -116,45 +116,69 @@
         </div>
         <div class="row g-4">
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-house-door"></i></div>
-                    <h5 class="mt-3 mb-2">Interior Design</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Complete home and office interior design solutions tailored to your lifestyle and budget.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80"
+                         alt="Interior Design" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-house-door"></i></div>
+                        <h5 class="mt-3 mb-2">Interior Design</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Complete home and office interior design solutions tailored to your lifestyle and budget.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-grid-3x3-gap"></i></div>
-                    <h5 class="mt-3 mb-2">Modular Kitchen</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Modern modular kitchen designs with premium materials, maximum storage, and elegant finish.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80"
+                         alt="Modular Kitchen" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-grid-3x3-gap"></i></div>
+                        <h5 class="mt-3 mb-2">Modular Kitchen</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Modern modular kitchen designs with premium materials, maximum storage, and elegant finish.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-easel2"></i></div>
-                    <h5 class="mt-3 mb-2">False Ceiling</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Designer false ceilings with LED lighting to elevate the look of any room.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=500&q=80"
+                         alt="False Ceiling" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-easel2"></i></div>
+                        <h5 class="mt-3 mb-2">False Ceiling</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Designer false ceilings with LED lighting to elevate the look of any room.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-door-open"></i></div>
-                    <h5 class="mt-3 mb-2">Door &amp; Window Work</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Teak, engineered wood, and uPVC doors &amp; windows with expert installation.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80"
+                         alt="Door Work" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-door-open"></i></div>
+                        <h5 class="mt-3 mb-2">Door &amp; Window Work</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Teak, engineered wood, and uPVC doors &amp; windows with expert installation.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-columns-gap"></i></div>
-                    <h5 class="mt-3 mb-2">Custom Furniture</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Handcrafted sofas, wardrobes, beds, and TV units built exactly to your measurements.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80"
+                         alt="Custom Furniture" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-columns-gap"></i></div>
+                        <h5 class="mt-3 mb-2">Custom Furniture</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Handcrafted sofas, wardrobes, beds, and TV units built exactly to your measurements.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-brush"></i></div>
-                    <h5 class="mt-3 mb-2">Wall Panels &amp; POP</h5>
-                    <p style="color:var(--muted);font-size:0.9rem;">Decorative wall panels, POP work, and texture painting for stunning interiors.</p>
+                <div class="service-card" style="padding:0;overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500&q=80"
+                         alt="Wall Panels" style="width:100%;height:180px;object-fit:cover;">
+                    <div style="padding:24px;">
+                        <div class="service-icon mx-auto" style="margin-top:0;"><i class="bi bi-brush"></i></div>
+                        <h5 class="mt-3 mb-2">Wall Panels &amp; POP</h5>
+                        <p style="color:var(--muted);font-size:0.9rem;">Decorative wall panels, POP work, and texture painting for stunning interiors.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,11 +224,17 @@
                 </div>
             </div>
             <div class="col-lg-7">
-                <!-- Placeholder image area — replace with real project image -->
-                <div style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:12px;height:420px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
-                    <i class="bi bi-image" style="font-size:4rem;color:var(--muted);opacity:0.4;"></i>
-                    <p style="color:var(--muted);font-size:0.85rem;">Add a project showcase image here</p>
-                    <small style="color:#555;font-size:0.78rem;">Place image at: webapp/images/showcase.jpg</small>
+                <!-- Showcase image — luxury interior project -->
+                <div style="position:relative;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80"
+                         alt="RK Group - Premium Interior Project"
+                         style="width:100%;height:420px;object-fit:cover;display:block;">
+                    <!-- Overlay badge -->
+                    <div style="position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);border:1px solid rgba(200,164,92,0.3);border-radius:10px;padding:14px 20px;">
+                        <p style="color:var(--primary);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px;">Featured Project</p>
+                        <h6 style="color:#fff;margin:0;font-size:0.95rem;">Luxury Villa Interior — Bhopal</h6>
+                        <small style="color:#aaa;">Full Interior Design &amp; Custom Furniture</small>
+                    </div>
                 </div>
             </div>
         </div>

@@ -353,3 +353,20 @@ h1, h2, h3, h4, h5 {
     .hero { min-height: 80vh; }
     .gallery-item img { height: 200px; }
 }
+
+/* ============================================================
+   SERVICE CARD IMAGE FIX — Image wale cards ke liye
+   ============================================================ */
+.service-card img {
+    transition: transform 0.4s ease;
+    display: block;
+}
+.service-card:hover img {
+    transform: scale(1.06);
+}
+.service-card > div {
+    text-align: center;
+}
+.service-card .service-icon {
+    margin: 0 auto 12px;
+}
