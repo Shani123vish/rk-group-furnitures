@@ -73,7 +73,7 @@
                     <i class="bi bi-person" style="color:var(--muted);"></i>
                 </span>
                 <input type="text" class="form-control" name="username"
-                       placeholder="Enter username" value="admin" required
+                       placeholder="Enter username"  required
                        style="border-left:none;border-radius:0 8px 8px 0;">
             </div>
         </div>
