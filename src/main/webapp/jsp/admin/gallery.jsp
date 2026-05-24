@@ -200,7 +200,7 @@
             </div>
             <form id="editForm" action="${pageContext.request.contextPath}/admin/gallery" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="edit">
-                <input type="hidden" name="id">
+                <input type="hidden" name="id" id="editId">
                 <div class="modal-body admin-form-card" style="border:none;">
                     <div class="row g-3">
                         <div class="col-md-8">
@@ -279,6 +279,20 @@ function previewMedia(input) {
     }
     reader.readAsDataURL(file);
 }
+//Edit modal open hone pe data fill karo
+document.querySelectorAll('.btn-open-edit').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.getElementById('editId').value = this.dataset.id;
+        
+        var form = document.getElementById('editForm');
+        form.querySelector('[name="title"]').value       = this.dataset.title;
+        form.querySelector('[name="description"]').value = this.dataset.description;
+        form.querySelector('[name="location"]').value    = this.dataset.location;
+        form.querySelector('[name="categoryId"]').value  = this.dataset.categoryid;
+        form.querySelector('[name="completiondate"]').value = this.dataset.completiondate || '';
+        form.querySelector('[name="isActive"]').value    = this.dataset.isactive;
+    });
+});
 </script>
 </body>
 </html>
