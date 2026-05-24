@@ -16,6 +16,8 @@ public class Gallery {
     private String completionDate;
     private boolean active;
     private String createdAt;
+    private String imageUrl;    // Cloudinary permanent URL
+    private String mediaType;   // "image" ya "video"
 
     public Gallery() {}
 
@@ -48,4 +50,13 @@ public class Gallery {
 
     public String getCreatedAt()                { return createdAt; }
     public void setCreatedAt(String createdAt)  { this.createdAt = createdAt; }
+
+    public String getImageUrl()                 { return imageUrl; }
+    public void setImageUrl(String imageUrl)    { this.imageUrl = imageUrl; }
+
+    public String getMediaType()                    { return mediaType; }
+    public void setMediaType(String mediaType)      { this.mediaType = mediaType; }
+
+    // Helper: video hai?
+    public boolean isVideo() { return "video".equals(mediaType); }
 }

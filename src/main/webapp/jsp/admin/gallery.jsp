@@ -164,10 +164,20 @@
                             <textarea class="form-control" name="description" rows="3" placeholder="Brief description of the work done..."></textarea>
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Project Image *</label>
-                            <input type="file" class="form-control image-upload" name="image" accept="image/*" required>
-                            <img id="imgPreview" src="#" alt="Preview" style="display:none;max-height:120px;margin-top:10px;border-radius:8px;">
-                            <small style="color:var(--muted);">Max 5MB. Formats: JPG, PNG, WEBP</small>
+                            <label class="form-label">Project Image / Video *</label>
+                            <input type="file" class="form-control image-upload" name="image"
+                                   accept="image/*,video/*" required
+                                   onchange="previewMedia(this)">
+                            <div id="mediaPreviewBox" style="margin-top:10px;display:none;">
+                                <img id="imgPreview" src="#" alt="Preview"
+                                     style="display:none;max-height:140px;border-radius:8px;">
+                                <video id="vidPreview" controls
+                                       style="display:none;max-height:140px;border-radius:8px;max-width:100%;"></video>
+                            </div>
+                            <small style="color:var(--muted);">
+                                Images: JPG, PNG, WEBP (max 10MB) |
+                                Videos: MP4, MOV (max 50MB)
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -227,8 +237,10 @@
                             <textarea class="form-control" name="description" rows="3"></textarea>
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Replace Image (optional)</label>
-                            <input type="file" class="form-control image-upload" name="image" accept="image/*">
+                            <label class="form-label">Replace Image / Video (optional)</label>
+                            <input type="file" class="form-control" name="image"
+                                   accept="image/*,video/*">
+                            <small style="color:var(--muted);">Image ya Video dono upload kar sakte hain</small>
                         </div>
                     </div>
                 </div>
@@ -243,5 +255,30 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/admin.js"></script>
+<script>
+// Image ya Video preview karo upload se pehle
+function previewMedia(input) {
+    var file = input.files[0];
+    if (!file) return;
+
+    var box   = document.getElementById('mediaPreviewBox');
+    var img   = document.getElementById('imgPreview');
+    var vid   = document.getElementById('vidPreview');
+    var reader = new FileReader();
+
+    box.style.display = 'block';
+
+    if (file.type.startsWith('video/')) {
+        img.style.display = 'none';
+        vid.style.display = 'block';
+        reader.onload = function(e) { vid.src = e.target.result; };
+    } else {
+        vid.style.display = 'none';
+        img.style.display = 'block';
+        reader.onload = function(e) { img.src = e.target.result; };
+    }
+    reader.readAsDataURL(file);
+}
+</script>
 </body>
 </html>

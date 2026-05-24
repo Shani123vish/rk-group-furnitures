@@ -87,6 +87,25 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="gallery-item rk-card">
                                 <c:choose>
+                                    <%-- Video media type --%>
+                                    <c:when test="${item.mediaType eq 'video' and not empty item.imageUrl}">
+                                        <div style="position:relative;height:250px;background:#000;overflow:hidden;">
+                                            <video style="width:100%;height:250px;object-fit:cover;"
+                                                   controls preload="metadata"
+                                                   poster="${item.imageUrl.replace('/upload/', '/upload/so_0/')}">
+                                                <source src="${item.imageUrl}" type="video/mp4">
+                                            </video>
+                                            <div style="position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.7);color:#fff;padding:3px 10px;border-radius:12px;font-size:0.72rem;">
+                                                <i class="bi bi-camera-video me-1"></i>Video
+                                            </div>
+                                        </div>
+                                    </c:when>
+                                    <%-- Cloudinary image URL --%>
+                                    <c:when test="${not empty item.imageUrl}">
+                                        <img src="${item.imageUrl}"
+                                             alt="${item.title}" style="height:250px;object-fit:cover;width:100%;">
+                                    </c:when>
+                                    <%-- Old local image (fallback) --%>
                                     <c:when test="${not empty item.imageFilename}">
                                         <img src="${pageContext.request.contextPath}/uploads/${item.imageFilename}"
                                              alt="${item.title}" style="height:250px;object-fit:cover;width:100%;">

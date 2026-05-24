@@ -1,27 +1,26 @@
 package controller;
 
-import dao.GalleryDAO;
-import model.Gallery;
-import util.FileUpload;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
+import dao.GalleryDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import model.Gallery;
+import util.CloudinaryUpload;
+
 /**
  * GalleryServlet.java
- * Public gallery view + admin upload/edit/delete.
- *
- * URLs:
- *   GET  /gallery             → public gallery grid
- *   GET  /gallery?catId=X     → filter by category
- *   GET  /admin/gallery       → admin gallery management
- *   POST /admin/gallery       → add / edit / delete gallery item
+ * Cloudinary ke saath — images aur videos dono upload ho sakti hain.
  */
 @WebServlet({"/gallery", "/admin/gallery"})
-@MultipartConfig(maxFileSize = 5 * 1024 * 1024, maxRequestSize = 10 * 1024 * 1024)
+@MultipartConfig(maxFileSize = 50 * 1024 * 1024,   // 50MB (videos ke liye)
+                 maxRequestSize = 60 * 1024 * 1024)
 public class GalleryServlet extends HttpServlet {
 
     private GalleryDAO galleryDAO = new GalleryDAO();
@@ -41,7 +40,7 @@ public class GalleryServlet extends HttpServlet {
             return;
         }
 
-        // Public gallery — optional category filter
+        // Public gallery
         String catId = req.getParameter("catId");
         List<Gallery> items;
         if (catId != null && !catId.isEmpty()) {
@@ -62,8 +61,7 @@ public class GalleryServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/admin/login"); return;
         }
 
-        String action    = req.getParameter("action");
-        String uploadDir = getServletContext().getRealPath("/uploads");
+        String action = req.getParameter("action");
 
         if ("add".equals(action)) {
             Gallery g = new Gallery();
@@ -73,11 +71,21 @@ public class GalleryServlet extends HttpServlet {
             g.setCategoryId(Integer.parseInt(req.getParameter("categoryId")));
             g.setCompletionDate(req.getParameter("completionDate"));
 
-            Part img = req.getPart("image");
-            String fn = FileUpload.saveFile(img, uploadDir);
-            g.setImageFilename(fn != null ? fn : "default-gallery.jpg");
+            // Cloudinary pe upload karo (image ya video dono)
+            Part mediaPart = req.getPart("image");
+            if (mediaPart != null && mediaPart.getSize() > 0) {
+                String cloudUrl = CloudinaryUpload.uploadFile(mediaPart, "gallery");
+                g.setImageUrl(cloudUrl);
+                // media type detect karo
+                String filename = mediaPart.getSubmittedFileName();
+                g.setMediaType(CloudinaryUpload.isVideo(filename) ? "video" : "image");
+                g.setImageFilename(filename); // backup
+            }
 
-            galleryDAO.addGallery(g);
+            boolean success = galleryDAO.addGallery(g);
+            if (!success) {
+                req.getSession().setAttribute("flashMsg", "Upload failed. Please try again.");
+            }
 
         } else if ("edit".equals(action)) {
             Gallery g = new Gallery();
@@ -89,25 +97,20 @@ public class GalleryServlet extends HttpServlet {
             g.setCompletionDate(req.getParameter("completionDate"));
             g.setActive("1".equals(req.getParameter("isActive")));
 
-            Part img = req.getPart("image");
-            g.setImageFilename(FileUpload.saveFile(img, uploadDir));
+            Part mediaPart = req.getPart("image");
+            if (mediaPart != null && mediaPart.getSize() > 0) {
+                String cloudUrl = CloudinaryUpload.uploadFile(mediaPart, "gallery");
+                g.setImageUrl(cloudUrl);
+                String filename = mediaPart.getSubmittedFileName();
+                g.setMediaType(CloudinaryUpload.isVideo(filename) ? "video" : "image");
+            }
             galleryDAO.updateGallery(g);
 
         } else if ("delete".equals(action)) {
-            // Soft delete - sirf is_active = 0 karta hai (Hidden)
             galleryDAO.deleteGallery(Integer.parseInt(req.getParameter("id")));
 
         } else if ("permanentDelete".equals(action)) {
-            // Permanently delete - DB se bhi hata do + image file bhi
-            int id = Integer.parseInt(req.getParameter("id"));
-            // Pehle image filename lo
-            model.Gallery g = galleryDAO.getById(id);
-            if (g != null && g.getImageFilename() != null) {
-                String uploadDir1 = getServletContext().getRealPath("/uploads");
-                util.FileUpload.deleteFile(g.getImageFilename(), uploadDir1);
-            }
-            // DB se permanently delete karo
-            galleryDAO.permanentDelete(id);
+            galleryDAO.permanentDelete(Integer.parseInt(req.getParameter("id")));
         }
 
         resp.sendRedirect(req.getContextPath() + "/admin/gallery");
