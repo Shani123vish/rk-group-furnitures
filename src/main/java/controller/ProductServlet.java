@@ -79,8 +79,17 @@ public class ProductServlet extends HttpServlet {
             if (pid != null && !pid.isEmpty()) inq.setProductId(Integer.parseInt(pid));
 
             boolean saved = inquiryDAO.addInquiry(inq);
-            req.setAttribute("inquirySuccess", saved);
-            req.getRequestDispatcher("/jsp/public/products.jsp").forward(req, resp);
+            
+            // ❌ Purana — forward karta tha bina products ke
+            // req.setAttribute("inquirySuccess", saved);
+            // req.getRequestDispatcher("/jsp/public/products.jsp").forward(req, resp);
+            
+            // ✅ Fix — redirect karo, products automatically load honge
+            if (saved) {
+                resp.sendRedirect(req.getContextPath() + "/products?success=1");
+            } else {
+                resp.sendRedirect(req.getContextPath() + "/products?error=1");
+            }
             return;
         }
 
