@@ -9,7 +9,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-N3S6BBWZFW');
 </script>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,6 +55,7 @@
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center gap-1">
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/products">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/jsp/public/contact.jsp">Contact</a></li>
@@ -72,7 +72,6 @@
         <span class="section-tag" style="color:rgba(201,168,76,0.9);border-color:rgba(201,168,76,0.25);background:rgba(201,168,76,0.08);">Our Catalog</span>
         <h1 class="section-title mt-2" style="color:#fff;">Our <span style="color:var(--gold-light);">Products</span></h1>
         <p style="color:rgba(255,255,255,0.55);margin-top:8px;">Browse our furniture and interior product catalog. Contact us for pricing and customization.</p>
-        <!-- Search Bar -->
         <div class="mt-4" style="max-width:420px;">
             <div class="d-flex">
                 <input type="text" id="productSearch" class="search-input"
@@ -109,11 +108,10 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 reveal">
                             <div class="product-card">
                                 <div style="position:relative;overflow:hidden;">
-                                    <!-- ✅ FIXED: sirf imageFilename use ho raha hai, imageUrl hata diya -->
                                     <c:choose>
                                         <c:when test="${not empty prod.imageFilename}">
-                                            <img src="${pageContext.request.contextPath}/uploads/${prod.imageFilename}"
-                                                 alt="${prod.name}">
+                                            <!-- ✅ FIXED: Direct Cloudinary URL use ho raha hai -->
+                                            <img src="${prod.imageFilename}" alt="${prod.name}">
                                         </c:when>
                                         <c:otherwise>
                                             <div style="height:210px;background:var(--light-gray);display:flex;align-items:center;justify-content:center;">
@@ -121,7 +119,6 @@
                                             </div>
                                         </c:otherwise>
                                     </c:choose>
-                                    <!-- Stock badge -->
                                     <span style="position:absolute;top:10px;right:10px;"
                                           class="${prod.stockStatus eq 'in_stock' ? 'badge-instock' : prod.stockStatus eq 'out_of_stock' ? 'badge-outstock' : 'badge-onorder'}">
                                         ${prod.stockStatus eq 'in_stock' ? 'In Stock' : prod.stockStatus eq 'out_of_stock' ? 'Out of Stock' : 'On Order'}

@@ -4,7 +4,7 @@ import dao.ProductDAO;
 import dao.InquiryDAO;
 import model.Product;
 import model.Inquiry;
-import util.FileUpload;
+import util.CloudinaryUpload;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,8 +20,8 @@ import java.util.List;
 )
 public class ProductServlet extends HttpServlet {
 
-    private ProductDAO  productDAO  = new ProductDAO();
-    private InquiryDAO  inquiryDAO  = new InquiryDAO();
+    private ProductDAO productDAO = new ProductDAO();
+    private InquiryDAO inquiryDAO = new InquiryDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -68,7 +68,7 @@ public class ProductServlet extends HttpServlet {
 
         String action = req.getParameter("action");
 
-        // ✅ Public inquiry — admin check nahi chahiye
+        // Public inquiry
         if ("inquiry".equals(action)) {
             Inquiry inq = new Inquiry();
             inq.setName(req.getParameter("name"));
@@ -79,12 +79,6 @@ public class ProductServlet extends HttpServlet {
             if (pid != null && !pid.isEmpty()) inq.setProductId(Integer.parseInt(pid));
 
             boolean saved = inquiryDAO.addInquiry(inq);
-            
-            // ❌ Purana — forward karta tha bina products ke
-            // req.setAttribute("inquirySuccess", saved);
-            // req.getRequestDispatcher("/jsp/public/products.jsp").forward(req, resp);
-            
-            // ✅ Fix — redirect karo, products automatically load honge
             if (saved) {
                 resp.sendRedirect(req.getContextPath() + "/products?success=1");
             } else {
@@ -93,13 +87,11 @@ public class ProductServlet extends HttpServlet {
             return;
         }
 
-        // ✅ Baaki sab admin ke liye
+        // Admin only
         if (!AdminServlet.isLoggedIn(req)) {
             resp.sendRedirect(req.getContextPath() + "/admin/login");
             return;
         }
-
-        String uploadDir = getServletContext().getRealPath("/uploads");
 
         if ("add".equals(action)) {
             Product p = new Product();
@@ -109,9 +101,14 @@ public class ProductServlet extends HttpServlet {
             p.setCategoryId(Integer.parseInt(req.getParameter("categoryId")));
             p.setStockStatus(req.getParameter("stockStatus"));
 
+            // ✅ Cloudinary upload
             Part imagePart = req.getPart("image");
-            String fileName = FileUpload.saveFile(imagePart, uploadDir);
-            p.setImageFilename(fileName != null ? fileName : "default-product.jpg");
+            if (imagePart != null && imagePart.getSize() > 0) {
+                String cloudUrl = CloudinaryUpload.uploadFile(imagePart, "products");
+                p.setImageFilename(cloudUrl != null ? cloudUrl : "");
+            } else {
+                p.setImageFilename("");
+            }
 
             boolean success = productDAO.addProduct(p);
             req.getSession().setAttribute("flashMsg",
@@ -128,9 +125,13 @@ public class ProductServlet extends HttpServlet {
             p.setStockStatus(req.getParameter("stockStatus"));
             p.setActive("1".equals(req.getParameter("isActive")));
 
+            // ✅ Cloudinary upload — sirf tab jab nai image upload ho
             Part imagePart = req.getPart("image");
-            String fileName = FileUpload.saveFile(imagePart, uploadDir);
-            p.setImageFilename(fileName);
+            if (imagePart != null && imagePart.getSize() > 0) {
+                String cloudUrl = CloudinaryUpload.uploadFile(imagePart, "products");
+                p.setImageFilename(cloudUrl);
+            }
+            // agar nai image nahi — purani DB wali rahegi (null set nahi hogi)
 
             productDAO.updateProduct(p);
             resp.sendRedirect(req.getContextPath() + "/admin/products");
@@ -142,12 +143,6 @@ public class ProductServlet extends HttpServlet {
 
         } else if ("permanentDelete".equals(action)) {
             int id = Integer.parseInt(req.getParameter("id"));
-            dao.ProductDAO pdao = new dao.ProductDAO();
-            model.Product prod = pdao.getProductById(id);
-            if (prod != null && prod.getImageFilename() != null) {
-                String uploadDir1 = getServletContext().getRealPath("/uploads");
-                util.FileUpload.deleteFile(prod.getImageFilename(), uploadDir1);
-            }
             productDAO.permanentDelete(id);
             resp.sendRedirect(req.getContextPath() + "/admin/products");
         }
