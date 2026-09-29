@@ -40,7 +40,8 @@
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/products">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/jsp/public/contact.jsp">Contact</a></li>
-                <li class="nav-item ms-2">
+                
+                <li class="nav-item ms-2"> 
                     <a class="btn btn-gold btn-sm" href="${pageContext.request.contextPath}/booking">
                         <i class="bi bi-calendar-check me-1"></i>Book Visit
                     </a>

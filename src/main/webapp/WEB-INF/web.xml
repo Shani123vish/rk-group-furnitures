@@ -16,5 +16,22 @@
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
+    <servlet>
+    <servlet-name>StyleServlet</servlet-name>
+    <servlet-class>controller.StyleServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>StyleServlet</servlet-name>
+    <url-pattern>/StyleServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>StyleResultServlet</servlet-name>
+    <servlet-class>controller.StyleResultServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>StyleResultServlet</servlet-name>
+    <url-pattern>/StyleResultServlet</url-pattern>
+</servlet-mapping>
 
 </web-app>
