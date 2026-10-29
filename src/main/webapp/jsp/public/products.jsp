@@ -50,12 +50,12 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><i class="bi bi-gem me-2"></i>RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group Logo" class="brand-logo">RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center gap-1">
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about.jsp">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/products">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/jsp/public/contact.jsp">Contact</a></li>
@@ -110,7 +110,7 @@
                                 <div style="position:relative;overflow:hidden;">
                                     <c:choose>
                                         <c:when test="${not empty prod.imageFilename}">
-                                            <!-- ✅ FIXED: Direct Cloudinary URL use ho raha hai -->
+                                            <!-- Direct Cloudinary URL -->
                                             <img src="${prod.imageFilename}" alt="${prod.name}">
                                         </c:when>
                                         <c:otherwise>

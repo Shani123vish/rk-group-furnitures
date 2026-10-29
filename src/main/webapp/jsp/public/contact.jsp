@@ -52,6 +52,7 @@
             box-shadow: var(--shadow-sm);
         }
         .contact-info-item:hover { transform: translateX(5px); border-color: rgba(184,134,11,0.3); box-shadow: var(--shadow-md); }
+        .contact-info-item a { word-break: break-all; }
         .wa-card {
             background: var(--white);
             border: 1px solid var(--mid-gray);
@@ -65,6 +66,9 @@
             gap: 14px;
             box-shadow: var(--shadow-sm);
         }
+        @media (max-width: 575px) {
+            .contact-wrap { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -72,11 +76,12 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><i class="bi bi-gem me-2"></i>RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group Logo" class="brand-logo">RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center gap-1">
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about.jsp">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/products">Products</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
@@ -130,7 +135,7 @@
                     <div class="why-icon" style="min-width:48px;height:48px;flex-shrink:0;"><i class="bi bi-envelope"></i></div>
                     <div>
                         <h6 style="color:var(--text-muted);font-size:0.78rem;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;">EMAIL</h6>
-                        <a href="mailto:rahulvishwakarma111999@gmail.com" style="color:var(--text-mid);font-size:0.85rem;">rahulvishwakarma111999@gmail.com</a>
+                        <a href="mailto:rkgroupfurnituresinterior@gmail.com" style="color:var(--text-mid);font-size:0.85rem;">rkgroupfurnituresinterior@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-info-item">

@@ -51,6 +51,9 @@
         }
         .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(184,134,11,0.3); }
         .info-card .service-icon { margin: 0 auto 12px; }
+        @media (max-width: 575px) {
+            .booking-form-wrap { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -58,11 +61,12 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><i class="bi bi-gem me-2"></i>RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group Logo" class="brand-logo">RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center gap-1">
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/about.jsp">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/products">Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/jsp/public/contact.jsp">Contact</a></li>

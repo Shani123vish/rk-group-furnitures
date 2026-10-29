@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
@@ -27,7 +26,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-            <i class="bi bi-gem me-2"></i>RK GROUP
+            <img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group Logo" class="brand-logo">RK GROUP
             <span>FURNITURES &amp; INTERIOR</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -111,7 +110,7 @@
                             </div>
                             <div>
                                 <div style="font-weight:700;font-size:0.88rem;color:#1a1a1a;">Featured Project</div>
-                                <div style="font-size:0.75rem;color:#888;">Luxury Villa Interior — Bhopal</div>
+                                <div style="font-size:0.75rem;color:#888;">Luxury Villa Interior — Rewa</div>
                             </div>
                         </div>
                     </div>
@@ -242,7 +241,7 @@
                          style="width:100%;height:420px;object-fit:cover;display:block;">
                     <div style="position:absolute;bottom:20px;left:20px;background:rgba(26,18,8,0.85);backdrop-filter:blur(8px);border:1px solid rgba(200,164,92,0.3);border-radius:12px;padding:16px 22px;">
                         <p style="color:var(--gold);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px;">Featured Project</p>
-                        <h6 style="color:#fff;margin:0;font-size:0.95rem;">Luxury Villa Interior — Bhopal</h6>
+                        <h6 style="color:#fff;margin:0;font-size:0.95rem;">Luxury Villa Interior — Rewa</h6>
                         <small style="color:rgba(255,255,255,0.6);">Full Interior Design &amp; Custom Furniture</small>
                     </div>
                 </div>
@@ -270,7 +269,7 @@
                         <div style="width:44px;height:44px;background:linear-gradient(135deg,rgba(184,134,11,0.15),rgba(184,134,11,0.05));border:1px solid rgba(184,134,11,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700;">R</div>
                         <div>
                             <h6 style="margin:0;font-size:0.92rem;">Ramesh Sharma</h6>
-                            <small style="color:var(--text-muted);">Arera Colony, Bhopal</small>
+                            <small style="color:var(--text-muted);">Civil Lines, Rewa</small>
                         </div>
                     </div>
                 </div>
@@ -285,7 +284,7 @@
                         <div style="width:44px;height:44px;background:linear-gradient(135deg,rgba(184,134,11,0.15),rgba(184,134,11,0.05));border:1px solid rgba(184,134,11,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700;">P</div>
                         <div>
                             <h6 style="margin:0;font-size:0.92rem;">Priya Patel</h6>
-                            <small style="color:var(--text-muted);">MP Nagar, Bhopal</small>
+                            <small style="color:var(--text-muted);">Ghoghar, Rewa</small>
                         </div>
                     </div>
                 </div>
@@ -328,7 +327,7 @@
                     <div class="why-icon" style="min-width:46px;height:46px;"><i class="bi bi-envelope"></i></div>
                     <div>
                         <h6>Email</h6>
-                        <a href="mailto:rahulvishwakarma111999@gmail.com" style="color:var(--text-mid);font-size:0.88rem;">rahulvishwakarma111999@gmail.com</a>
+                        <a href="mailto:rkgroupfurnituresinterior@gmail.com" style="color:var(--text-mid);font-size:0.88rem;word-break:break-all;">rkgroupfurnituresinterior@gmail.com</a>
                     </div>
                 </div>
                 <div class="why-item mb-4">
@@ -358,7 +357,8 @@
             </div>
             <div class="col-lg-7 reveal-right">
                 <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--mid-gray);box-shadow:var(--shadow-md);">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d77.9!3d21.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDU0JzAwLjAiTiA3N8KwNTQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                    <!-- Map: Rewa. Apni exact shop ka embed chahiye to Google Maps > Share > Embed a map se code laga dena -->
+                    <iframe src="https://www.google.com/maps?q=Rewa,+Madhya+Pradesh&output=embed"
                             width="100%" height="460" style="border:0;display:block;" allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
@@ -372,7 +372,9 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
-                <div class="footer-logo"><span>RK</span> GROUP</div>
+                <div class="footer-logo">
+                    <img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group" style="height:40px;width:auto;margin-right:8px;vertical-align:middle;"><span>RK</span> GROUP
+                </div>
                 <p style="margin-bottom:20px;">Premium furniture craftsmanship and interior design solutions. We transform your space with elegance, quality, and timely delivery.</p>
                 <div class="mt-3">
                     <a href="https://wa.me/917772897077" class="social-link"><i class="bi bi-whatsapp"></i></a>
@@ -405,7 +407,7 @@
                 <ul class="list-unstyled" style="font-size:0.88rem;">
                     <li class="mb-2"><i class="bi bi-telephone me-2" style="color:var(--gold);"></i><a href="tel:7772897077">7772897077</a></li>
                     <li class="mb-2"><i class="bi bi-whatsapp me-2" style="color:var(--gold);"></i><a href="https://wa.me/917772897077">WhatsApp Us</a></li>
-                    <li class="mb-2"><i class="bi bi-envelope me-2" style="color:var(--gold);"></i><a href="mailto:rahulvishwakarma111999@gmail.com">Email Us</a></li>
+                    <li class="mb-2"><i class="bi bi-envelope me-2" style="color:var(--gold);"></i><a href="mailto:rkgroupfurnituresinterior@gmail.com">Email Us</a></li>
                     <li class="mb-2"><i class="bi bi-geo-alt me-2" style="color:var(--gold);"></i><a href="https://maps.app.goo.gl/g78BgUACNh3cK3iz8?g_st=aw" target="_blank">View Location</a></li>
                 </ul>
             </div>

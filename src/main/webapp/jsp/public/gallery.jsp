@@ -55,7 +55,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><i class="bi bi-gem me-2"></i>RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/rk-logo.png" alt="RK Group Logo" class="brand-logo">RK GROUP<span>FURNITURES &amp; INTERIOR</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-center gap-1">
@@ -84,11 +84,6 @@
 <div class="filter-bar">
     <div class="container">
         <div class="d-flex gap-2 flex-wrap">
-            <%--
-                FIX: JSTL EL mein Java method call nahi hota.
-                'abc'.equals(x) → WRONG in EL
-                param.catId eq 'abc' → CORRECT in EL
-            --%>
             <a href="${pageContext.request.contextPath}/gallery"
                class="filter-btn ${empty param.catId ? 'active' : ''}">All Work</a>
             <a href="${pageContext.request.contextPath}/gallery?catId=1"
